@@ -33,7 +33,7 @@ jobs:
           java-version: "11"
 
       - name: Clean Mule Project
-        run: mvn clean install
+        run: mvn clean -B -s .maven/settings.xml
 
       - name: Run Munits
         run: mvn clean test
@@ -42,5 +42,5 @@ jobs:
         run: mvn clean package  
         
       - name : Deploy the code
-        run: mvn -X clean deploy -DmuleDeploy
+        run: mvn clean deploy -DmuleDeploy -B -s .maven/settings.xml
         
