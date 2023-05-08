@@ -36,7 +36,7 @@
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
-				<version>3.6.3</version>
+				<version>3.8.0</version>
 				<extensions>true</extensions>
 				<configuration>
 					<classifier>Mule-Application</classifier>
@@ -45,7 +45,7 @@
 						<muleVersion>4.4.0</muleVersion>
 						<username>speriyala3</username>
 						<password>Psmohan@234</password>
-						<applicationName>cicd-test-sapi</applicationName>
+						<applicationName>openlogix-lifecyc-test</applicationName>
 						<environment>Sandbox</environment>
 						<region>us-east-2</region>
 						<workers>1</workers>
