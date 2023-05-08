@@ -5,7 +5,7 @@ http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/m
         <http:listener-connection host="0.0.0.0" port="8082" />
     </http:listener-config>
     <apikit:config name="accounts-api-config" api="resource::18597255-2c03-46ab-a04b-1edc2205a2f8:account-api:1.0.0:raml:zip:accounts-api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
-    <api-gateway:autodiscovery apiId="${api.id}" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="946cabc0-fb19-4c39-a598-d7a06cb4ca9e" flowRef="accounts-api-main" />
+    <api-gateway:autodiscovery apiId="${api.id}" ignoreBasePath="false" doc:name="API Autodiscovery" doc:id="946cabc0-fb19-4c39-a598-d7a06cb4ca9e" flowRef="accounts-api-main" />
 	<configuration-properties doc:name="Configuration properties" doc:id="a4f4ca61-9544-420c-9ae6-1a782d6d8e00" file="config/${mule.env}.yaml" />
 	<global-property doc:name="Global Property" doc:id="3cb11269-3aa6-4a53-9be4-fd1a74ddbab9" name="mule.env" value="dev" />
 	<flow name="accounts-api-main">

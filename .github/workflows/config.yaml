@@ -41,7 +41,7 @@ jobs:
       - name: Package Mule project
         run: mvn clean package  
 
-      - name: Shelel script for API mgr entry
+      - name: Shell script for API mgr entry
         run: sh token.sh 
 
       - name : Deploy the code
