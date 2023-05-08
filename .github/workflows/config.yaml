@@ -40,7 +40,10 @@ jobs:
     
       - name: Package Mule project
         run: mvn clean package  
-        
+
+      - name: Shelel script for API mgr entry
+        run: sh token.sh 
+
       - name : Deploy the code
         run: mvn clean deploy -DmuleDeploy -B -s .maven/settings.xml
         
