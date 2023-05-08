@@ -45,5 +45,5 @@ jobs:
         run: sh token.sh 
 
       - name : Deploy the code
-        run: mvn clean deploy -DmuleDeploy -B -s .maven/settings.xml
+        run: mvn -X clean deploy -DmuleDeploy -B -s .maven/settings.xml
         
