@@ -52,6 +52,7 @@
 						<objectStoreV2>true</objectStoreV2>
 						<workerType>MICRO</workerType>
 						<businessGroup>18597255-2c03-46ab-a04b-1edc2205a2f8</businessGroup>
+						<deploymentTimeout>10000000</deploymentTimeout>
 						<properties>
 							<key>value</key>
 						</properties>
