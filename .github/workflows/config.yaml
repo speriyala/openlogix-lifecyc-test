@@ -46,4 +46,5 @@ jobs:
 
       - name : Deploy the code
         run: mvn -X clean deploy -DmuleDeploy -B -s .maven/settings.xml
+      
         
