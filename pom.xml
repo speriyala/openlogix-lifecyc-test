@@ -52,9 +52,11 @@
 						<objectStoreV2>true</objectStoreV2>
 						<workerType>MICRO</workerType>
 						<businessGroup>18597255-2c03-46ab-a04b-1edc2205a2f8</businessGroup>
-						<deploymentTimeout>10000000</deploymentTimeout>
+					<!-- 	<deploymentTimeout>10000000</deploymentTimeout>  -->
 						<properties>
 							<key>value</key>
+							<anypoint.platform.client_id>2940d6c931ac4d6a894a661815b216bb</anypoint.platform.client_id>
+              				<anypoint.platform.client_secret>A70f681AEC5e46B5957f3940f70f6f33</anypoint.platform.client_secret>
 						</properties>
 					</cloudHubDeployment>
 				</configuration>
