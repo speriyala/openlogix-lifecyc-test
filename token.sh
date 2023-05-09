@@ -27,9 +27,9 @@ echo "group id is $varGrp  asset name is $varAsset  version is $varVersion"
 
 #check if api name already exists in api manager , insert into api manager only if no record with api name and version exists
 
-var1=$(curl -X GET "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/$varOrg/environments/$varEnv/apis?ascending=false&limit=20&offset=0&sort=createdDate" -H "Authorization: Bearer $varAccess")
+varApi=$(curl -X GET "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/$varOrg/environments/$varEnv/apis?ascending=false&limit=20&offset=0&sort=createdDate" -H "Authorization: Bearer $varAccess")
 
-assetExists=$(grep -o '"assetId":"'$varAssetName'","assetVersion":"'$varVersion'"' <<< "$var1" | wc -l)
+assetExists=$(grep -o '"assetId":"'$varAssetName'","assetVersion":"'$varVersion'"' <<< "$varApi" | wc -l)
 echo "no of occurances is " $assetExists
 
 if [ $assetExists -eq 0 ]; then
