@@ -34,9 +34,9 @@ varApi=$(curl -X GET "https://anypoint.mulesoft.com/apimanager/api/v1/organizati
 #assetExists=$(grep -o '"assetId":"cicd-test-sapi","assetVersion":"1.0.0"' <<< $varApi | wc -l)
 
 #echo "no of occurance is " $assetExists
-echo "number of occurance is " $varApi
+echo "asset and version occurance is " $varApi
 
-if [ $assetExists -eq 0 ]; then
+if [ -z "$varApi" ]; then  #checks if $varApi is null , insert only if null
 
             curl -X POST "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/$varOrg/environments/$varEnv/apis" \
                -H "Content-Type: application/json" \
