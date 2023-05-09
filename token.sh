@@ -22,27 +22,40 @@ varGrp=$(echo $varExch | cut -d '"' -f 4)
 varAsset=$(echo $varExch | cut -d '"' -f 8)
 varVersion=$(echo $varExch | cut -d '"' -f 12)
 echo "group id is $varGrp  asset name is $varAsset  version is $varVersion"
-# 3rd STEP:  to post the api into api manager
-curl -X POST "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/$varOrg/environments/$varEnv/apis" \
-	 -H "Content-Type: application/json" \
-	 -H "Authorization: Bearer $varAccess" \
-	 -d '{
-   "endpoint":{
-      "deploymentType":"CH",
-      "isCloudHub":null,
-      "muleVersion4OrAbove":true,
 
-      "proxyUri":null,
-      "referencesUserDomain":null,
-      "responseTimeout":null,
-      "type":"raml",
-      "uri":null
-   },
-   "providerId":null,
-   "instanceLabel":null,
-   "spec":{
-      "assetId":"'$varAsset'",
-      "groupId":"'$varGrp'",
-      "version":"'$varVersion'"
-   }
-}'
+# 3rd STEP:  to post the api into api manager
+
+#check if api name already exists in api manager , insert into api manager only if no record with api name and version exists
+
+var1=$(curl -X GET "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/$varOrg/environments/$varEnv/apis?ascending=false&limit=20&offset=0&sort=createdDate" -H "Authorization: Bearer $varAccess")
+
+assetExists=$(grep -o '"assetId":"'$varAssetName'","assetVersion":"'$varVersion'"' <<< "$var1" | wc -l)
+echo "no of occurances is " $assetExists
+
+if [ $assetExists -eq 0 ]; then
+
+            curl -X POST "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/$varOrg/environments/$varEnv/apis" \
+               -H "Content-Type: application/json" \
+               -H "Authorization: Bearer $varAccess" \
+               -d '{
+               "endpoint":{
+                  "deploymentType":"CH",
+                  "isCloudHub":null,
+                  "muleVersion4OrAbove":true,
+
+                  "proxyUri":null,
+                  "referencesUserDomain":null,
+                  "responseTimeout":null,
+                  "type":"raml",
+                  "uri":null
+               },
+               "providerId":null,
+               "instanceLabel":null,
+               "spec":{
+                  "assetId":"'$varAsset'",
+                  "groupId":"'$varGrp'",
+                  "version":"'$varVersion'"
+               }
+            }'
+
+fi
