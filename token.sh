@@ -33,7 +33,7 @@ varApi=$(curl -X GET "https://anypoint.mulesoft.com/apimanager/api/v1/organizati
 assetExists=$(echo grep -o '"assetId":"cicd-test-sapi","assetVersion":"1.0.0"' <<< "$varApi" | wc -l)
 
 #echo "no of occurance is " $assetExists
-echo "no of occurance is " $assetExists
+echo "no of occurances is " $assetExists
 
 if [ $assetExists -eq 0 ]; then
 
