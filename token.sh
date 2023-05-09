@@ -29,12 +29,12 @@ echo "group id is $varGrp  asset name is $varAsset  version is $varVersion"
 
 varApi=$(curl -X GET "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/$varOrg/environments/$varEnv/apis?ascending=false&limit=20&offset=0&sort=createdDate" -H "Authorization: Bearer $varAccess")
 
-echo '"assetId":"'$varAssetName'","assetVersion":"'$varVersion'"' <<< "$varApi" 
+#echo '"assetId":"'$varAssetName'","assetVersion":"'$varVersion'"' <<< "$varApi" 
 
 #assetExists=$(grep -o '"assetId":"'$varAssetName'","assetVersion":"'$varVersion'"' <<< "$varApi" | wc -l)
-echo "no of occurance is " $assetExists
+#cho "no of occurance is " $assetExists
 
-if [ $assetExists -eq 0 ]; then
+#if [ $assetExists -eq 0 ]; then
 
             curl -X POST "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/$varOrg/environments/$varEnv/apis" \
                -H "Content-Type: application/json" \
@@ -60,4 +60,4 @@ if [ $assetExists -eq 0 ]; then
                }
             }'
 
-fi
+#fi
