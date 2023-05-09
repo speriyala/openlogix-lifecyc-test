@@ -30,8 +30,10 @@ echo "group id is $varGrp  asset name is $varAsset  version is $varVersion"
 varApi=$(curl -X GET "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/$varOrg/environments/$varEnv/apis?ascending=false&limit=20&offset=0&sort=createdDate" -H "Authorization: Bearer $varAccess")
 
 
-assetExists=$(grep -o '"assetId":"cicd-test-sapi","assetVersion":"1.0.0"' <<< "$varApi" | wc -l)
-echo "no of occurance is " $assetExists
+#assetExists=$(grep -o '"assetId":"cicd-test-sapi","assetVersion":"1.0.0"' <<< "$varApi" | wc -l)
+
+#echo "no of occurance is " $assetExists
+echo "no of occurance is " $varApi
 
 if [ $assetExists -eq 0 ]; then
 
